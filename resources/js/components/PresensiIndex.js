@@ -113,6 +113,7 @@ class PresensiIndex extends Component {
                                                 <th>Nama Pegawai</th>
                                                 <th>Presensi</th>
                                                 <th>Keterangan</th>
+                                                <th>Tanggal</th>
                                                 <th
                                                     width="200"
                                                     className="text-center"
@@ -134,6 +135,7 @@ class PresensiIndex extends Component {
                                                     <td>{p.nama_pegawai}</td>
                                                     <td>{p.jenis_presensi}</td>
                                                     <td>{p.keterangan}</td>
+                                                    <td>{p.tanggal}</td>
                                                     <td
                                                         width="200"
                                                         className="text-center"
