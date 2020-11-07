@@ -71688,7 +71688,6 @@ var PegawaiCreate = /*#__PURE__*/function (_Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      nip: "",
       nama_pegawai: "",
       id_fungsional: "",
       id_struktural: "",
@@ -71748,7 +71747,6 @@ var PegawaiCreate = /*#__PURE__*/function (_Component) {
 
       event.preventDefault();
       var pegawai = {
-        nip: this.state.nip,
         nama_pegawai: this.state.nama_pegawai,
         id_fungsional: this.state.id_fungsional,
         id_struktural: this.state.id_struktural
@@ -71794,17 +71792,6 @@ var PegawaiCreate = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
         onSubmit: this.handleCreateNewPegawai
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "form-group"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
-        htmlFor: "nip"
-      }, "NIP"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
-        id: "nip",
-        type: "number",
-        className: "form-control ".concat(this.hasErrorFor("nip") ? "is-invalid" : ""),
-        name: "nip",
-        value: this.state.nip,
-        onChange: this.handleFieldChange
-      }), this.renderErrorFor("nip")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "form-group"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
         htmlFor: "nama_pegawai"
@@ -71924,10 +71911,7 @@ var PegawaiEdit = /*#__PURE__*/function (_Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      nip: "",
       nama_pegawai: "",
-      id_fungsional: "",
-      id_struktural: "",
       alert: null,
       message: "",
       errors: []
@@ -71952,10 +71936,7 @@ var PegawaiEdit = /*#__PURE__*/function (_Component) {
       var pegawaiId = this.props.match.params.id_pegawai;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/pegawai/edit/".concat(pegawaiId)).then(function (response) {
         _this2.setState({
-          nip: response.data.nip,
-          nama_pegawai: response.data.nama_pegawai,
-          id_fungsional: response.data.id_fungsional,
-          id_struktural: response.data.id_struktural
+          nama_pegawai: response.data[0].nama_pegawai
         });
       });
     }
@@ -72000,10 +71981,7 @@ var PegawaiEdit = /*#__PURE__*/function (_Component) {
 
       event.preventDefault();
       var pegawai = {
-        nip: this.state.nip,
-        nama_pegawai: this.state.nama_pegawai,
-        id_fungsional: this.state.id_fungsional,
-        id_struktural: this.state.id_struktural
+        nama_pegawai: this.state.nama_pegawai
       };
       var pegawaiId = this.props.match.params.id_pegawai;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/pegawai/".concat(pegawaiId), pegawai).then(function (response) {
@@ -72054,17 +72032,6 @@ var PegawaiEdit = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "form-group"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
-        htmlFor: "nip"
-      }, "NIP"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
-        id: "nip",
-        type: "number",
-        className: "form-control ".concat(this.hasErrorFor("nip") ? "is-invalid" : ""),
-        name: "nip",
-        value: this.state.nip,
-        onChange: this.handleFieldChange
-      }), this.renderErrorFor("nip")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "form-group"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
         htmlFor: "nama_pegawai"
       }, "Nama Pegawai"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
         id: "nama_pegawai",
@@ -72073,45 +72040,7 @@ var PegawaiEdit = /*#__PURE__*/function (_Component) {
         name: "nama_pegawai",
         value: this.state.nama_pegawai,
         onChange: this.handleFieldChange
-      }), this.renderErrorFor("nama_pegawai")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "form-group"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
-        htmlFor: "id_fungsional"
-      }, "Fungsional"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("select", {
-        id: "id_fungsional",
-        className: "form-control ".concat(this.hasErrorFor("id_fungsional") ? "is-invalid" : ""),
-        name: "id_fungsional",
-        value: this.state.id_fungsional,
-        onChange: this.handleFieldChange
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "1",
-        selected: 1 === this.state.id_fungsional ? 'selected' : 'false'
-      }, "Engineer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "2",
-        selected: 2 === this.state.id_fungsional ? 'selected' : 'false'
-      }, "Administrasi"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "3",
-        selected: 3 === this.state.id_fungsional ? 'selected' : 'false'
-      }, "Support")), this.renderErrorFor("id_fungsional")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "form-group"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
-        htmlFor: "id_struktural"
-      }, "Struktural"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("select", {
-        id: "id_struktural",
-        className: "form-control ".concat(this.hasErrorFor("id_struktural") ? "is-invalid" : ""),
-        name: "id_struktural",
-        value: this.state.id_struktural,
-        onChange: this.handleFieldChange
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "1",
-        selected: 1 === this.state.id_struktural ? 'selected' : 'false'
-      }, "Manager"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "2",
-        selected: 2 === this.state.id_struktural ? 'selected' : 'false'
-      }, "Team Leader"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "3",
-        selected: 3 === this.state.id_struktural ? 'selected' : 'false'
-      }, "Staff")), this.renderErrorFor("id_struktural")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      }), this.renderErrorFor("nama_pegawai")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         className: "btn btn-secondary",
         to: "/"
       }, "Kembali"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {

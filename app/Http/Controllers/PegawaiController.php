@@ -15,7 +15,6 @@ class PegawaiController extends Controller
 
     public function store(Request $request){
         $validatedData = $request->validate([
-            'nip' => 'required',
             'nama_pegawai' => 'required',
             'id_fungsional' => 'required',
             'id_struktural' => 'required',
@@ -27,9 +26,24 @@ class PegawaiController extends Controller
         //     'id_fungsional' => $validatedData['id_fungsional'],
         //     'id_struktural' => $validatedData['id_struktural'],
         //   ]);
+        $pegawai_m = new Pegawai();
           $pegawai = \App\Models\Pegawai::create();
-            
-          $pegawai->nip = $validatedData['nip'];
+
+          $tahun = date('y');
+          $fungsional = strlen((string)$validatedData['id_fungsional']) == 1 ? '0'.$validatedData['id_fungsional'] : $validatedData['id_fungsional'] ;
+          $struktural = strlen((string)$validatedData['id_struktural']) == 1 ? '0'.$validatedData['id_struktural'] : $validatedData['id_struktural'] ;
+          $nip_cari = (int)$tahun.$fungsional.$struktural;
+          $cari = $pegawai_m->read_max_nip([
+              ['nip','like',"$nip_cari%"]
+          ]);
+          if($cari == null){
+              $nip_baru = (int)$nip_cari.'0001';
+          } else {
+              $nip_before = (int)$cari->nip;
+              $nip_baru = $nip_before + 1;
+          }
+
+          $pegawai->nip = $nip_baru;
           $pegawai->nama_pegawai = $validatedData['nama_pegawai'];
           $pegawai->id_fungsional = $validatedData['id_fungsional'];
           $pegawai->id_struktural = $validatedData['id_struktural'];
@@ -52,17 +66,11 @@ class PegawaiController extends Controller
     public function update(Request $request, $id_pegawai)
     {
         $validatedData = $request->validate([
-            'nip' => 'required',
             'nama_pegawai' => 'required',
-            'id_fungsional' => 'required',
-            'id_struktural' => 'required',
           ]);
  
         $pegawai = \App\Models\Pegawai::find($id_pegawai);
-        $pegawai->nip = $validatedData['nip'];
         $pegawai->nama_pegawai = $validatedData['nama_pegawai'];
-        $pegawai->id_fungsional = $validatedData['id_fungsional'];
-        $pegawai->id_struktural = $validatedData['id_struktural'];
         $pegawai->save();
  
         $msg = [

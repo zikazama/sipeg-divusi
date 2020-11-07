@@ -7,7 +7,6 @@ class PegawaiCreate extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            nip: "",
             nama_pegawai: "",
             id_fungsional: "",
             id_struktural: "",
@@ -57,7 +56,6 @@ class PegawaiCreate extends Component {
     handleCreateNewPegawai(event) {
         event.preventDefault();
         const pegawai = {
-            nip: this.state.nip,
             nama_pegawai: this.state.nama_pegawai,
             id_fungsional: this.state.id_fungsional,
             id_struktural: this.state.id_struktural
@@ -94,22 +92,7 @@ class PegawaiCreate extends Component {
                             <div className="card-header">Tambah Pegawai</div>
                             <div className="card-body">
                                 <form onSubmit={this.handleCreateNewPegawai}>
-                                    <div className="form-group">
-                                        <label htmlFor="nip">NIP</label>
-                                        <input
-                                            id="nip"
-                                            type="number"
-                                            className={`form-control ${
-                                                this.hasErrorFor("nip")
-                                                    ? "is-invalid"
-                                                    : ""
-                                            }`}
-                                            name="nip"
-                                            value={this.state.nip}
-                                            onChange={this.handleFieldChange}
-                                        />
-                                        {this.renderErrorFor("nip")}
-                                    </div>
+                                    
                                     <div className="form-group">
                                         <label htmlFor="nama_pegawai">
                                             Nama Pegawai

@@ -29,6 +29,14 @@ class Pegawai extends Model
         return $query;
     }
 
+    public function read_max_nip($where){
+        $query = DB::table($this->table)
+                ->where($where)
+                ->orderByDesc('nip')
+                ->first();
+        return $query;
+    }
+
     public function read_one_where($where){
         $query = DB::table($this->table)->join('fungsional','fungsional.id_fungsional','=','pegawai.id_fungsional')
                 ->join('struktural','struktural.id_struktural','=','pegawai.id_struktural')
