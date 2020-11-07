@@ -18,14 +18,14 @@ class PresensiController extends Controller
             'id_pegawai' => 'required',
             'jenis_presensi' => 'required',
             'keterangan' => 'required',
+            'tanggal' => 'required',
           ]);
 
-          $presensi_m = new Presensi();
           $presensi = \App\Models\Presensi::create();
 
-          $presensi->id_pegawai = $validatedData['id_pegawai'];
           $presensi->jenis_presensi = $validatedData['jenis_presensi'];
           $presensi->keterangan = $validatedData['keterangan'];
+          $presensi->tanggal = $validatedData['tanggal'];
           $presensi->save();
 
           $msg = [
@@ -47,11 +47,13 @@ class PresensiController extends Controller
         $validatedData = $request->validate([
             'jenis_presensi' => 'required',
             'keterangan' => 'required',
+            'tanggal' => 'required'
           ]);
  
         $presensi = \App\Models\Pegawai::find($id_presensi);
         $presensi->jenis_presensi = $validatedData['jenis_presensi'];
         $presensi->keterangan = $validatedData['keterangan'];
+        $presensi->tanggal = $validatedData['tanggal'];
         $presensi->save();
  
         $msg = [
