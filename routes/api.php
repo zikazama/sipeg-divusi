@@ -21,3 +21,10 @@ Route::get('/pegawai/edit/{id}', [PegawaiController::class, 'getPegawai']);
 Route::get('/pegawai/{id}', [PegawaiController::class ,'getPegawai']);
 Route::put('/pegawai/{id}', [PegawaiController::class, 'update']);
 Route::delete('/pegawai/delete/{id}', [PegawaiController::class,'delete']);
+
+Route::get('/presensi', [PresensiController::class, 'index']);
+Route::post('/presensi/store', [PresensiController::class, 'store']);
+Route::get('/presensi/edit/{id}', [PresensiController::class, 'getPresensi']);
+Route::get('/presensi/{id}', [PresensiController::class ,'getPresensi']);
+Route::put('/presensi/{id}', [PresensiController::class, 'update']);
+Route::delete('/presensi/delete/{id}', [PresensiController::class,'delete']);

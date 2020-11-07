@@ -16,5 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::view('/pegawai', 'app');
 Route::view('/pegawai/edit/{id}', 'app');
 Route::view('/pegawai/{id}', 'app');
+Route::view('/presensi', 'app');
+Route::view('/presensi/edit/{id}', 'app');
+Route::view('/presensi/{id}', 'app');
 Route::view('/', 'app');
 Route::view('/{path}', 'app');
