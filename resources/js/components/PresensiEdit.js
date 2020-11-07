@@ -3,17 +3,20 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import SweetAlert from "react-bootstrap-sweetalert";
 
-class PegawaiEdit extends Component {
+class PresensiEdit extends Component {
     constructor(props) {
         super(props);
         this.state = {
             nama_pegawai: "",
+            jenis_presensi: "",
+            keterangan: "",
+            tanggal: "",
             alert: null,
             message: "",
             errors: []
         };
         this.handleFieldChange = this.handleFieldChange.bind(this);
-        this.handleUpdatePegawai = this.handleUpdatePegawai.bind(this);
+        this.handleUpdatePresensi = this.handleUpdatePresensi.bind(this);
         this.hasErrorFor = this.hasErrorFor.bind(this);
         this.renderErrorFor = this.renderErrorFor.bind(this);
     }
@@ -25,11 +28,14 @@ class PegawaiEdit extends Component {
     }
 
     componentDidMount() {
-        const pegawaiId = this.props.match.params.id_pegawai;
+        const presensiId = this.props.match.params.id_presensi;
 
-        axios.get(`/api/pegawai/edit/${pegawaiId}`).then(response => {
+        axios.get(`/api/presensi/edit/${presensiId}`).then(response => {
             this.setState({
                 nama_pegawai: response.data[0].nama_pegawai,
+                jenis_presensi: response.data[0].jenis_presensi,
+                keterangan: response.data[0].keterangan,
+                tanggal: response.data[0].tanggal,
             });
         });
     }
@@ -62,16 +68,18 @@ class PegawaiEdit extends Component {
         });
     }
 
-    handleUpdatePegawai(event) {
+    handleUpdatePresensi(event) {
         event.preventDefault();
 
-        const pegawai = {
-            nama_pegawai: this.state.nama_pegawai,
+        const presensi = {
+            jenis_presensi: this.state.jenis_presensi,
+            keterangan: this.state.keterangan,
+            tanggal: this.state.tanggal,
         };
 
-        const pegawaiId = this.props.match.params.id_pegawai;
+        const presensiId = this.props.match.params.id_presensi;
 
-        axios.put(`/api/pegawai/${pegawaiId}`, pegawai).then(response => {
+        axios.put(`/api/presensi/${presensiId}`, presensi).then(response => {
             // redirect to the homepage
             var msg = response.data.success;
             if (msg == true) {
@@ -147,4 +155,4 @@ class PegawaiEdit extends Component {
         );
     }
 }
-export default PegawaiEdit;
+export default PresensiEdit;
