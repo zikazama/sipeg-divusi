@@ -132,8 +132,8 @@ class PegawaiIndex extends Component {
                                                     </td>
                                                     <td>{p.nip}</td>
                                                     <td>{p.nama_pegawai}</td>
-                                                    <td>{p.id_fungsional}</td>
-                                                    <td>{p.id_struktural}</td>
+                                                    <td>{p.nama_fungsional}</td>
+                                                    <td>{p.nama_struktural}</td>
                                                     <td
                                                         width="200"
                                                         className="text-center"

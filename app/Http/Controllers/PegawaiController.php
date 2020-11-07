@@ -8,8 +8,9 @@ use \App\Models\Pegawai;
 class PegawaiController extends Controller
 {
     public function index(){
-        $pegawai = \App\Models\Pegawai::all();
-        return $pegawai->toJson();
+        $pegawai = new Pegawai;
+        $hasil = $pegawai->read_full();
+        return $hasil->toJson();
     }
 
     public function store(Request $request){
@@ -33,7 +34,6 @@ class PegawaiController extends Controller
           $pegawai->id_fungsional = $validatedData['id_fungsional'];
           $pegawai->id_struktural = $validatedData['id_struktural'];
           $pegawai->save();
-        //Pegawai::create($request->all());
 
           $msg = [
               'success' => true,
@@ -44,8 +44,9 @@ class PegawaiController extends Controller
     }
 
     public function getPegawai($id_pegawai){
-        $pegawai = \App\Models\Pegawai::find($id_pegawai);
-        return $pegawai->toJson();
+        $pegawai = new Pegawai();
+        $hasil = $pegawai->read_full_where([['id_pegawai', '=' ,$id_pegawai]]);
+        return $hasil->toJson();
     }
 
     public function update(Request $request, $id_pegawai)

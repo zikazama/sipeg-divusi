@@ -15,7 +15,7 @@ class PegawaiShow extends Component {
 
         axios.get(`/api/pegawai/${pegawaiId}`).then(response => {
             this.setState({
-                pegawai: response.data
+                pegawai: response.data[0]
             });
         });
     }
@@ -33,8 +33,8 @@ class PegawaiShow extends Component {
                             </div>
                             <div className="card-body">
                                 <h6>Nama Pegawai : {pegawai.nama_pegawai}</h6>
-                                <h6>Fungsional : {pegawai.id_fungsional}</h6>
-                                <h6>Struktural : {pegawai.id_struktural}</h6>
+                                <h6>Fungsional : {pegawai.nama_fungsional}</h6>
+                                <h6>Struktural : {pegawai.nama_struktural}</h6>
 
                                 <Link className="btn btn-primary" to={`/`}>
                                     Kembali

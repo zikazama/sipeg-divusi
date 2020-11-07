@@ -72317,7 +72317,7 @@ var PegawaiIndex = /*#__PURE__*/function (_Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
           width: "50",
           className: "text-center"
-        }, i + 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, p.nip), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, p.nama_pegawai), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, p.id_fungsional), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, p.id_struktural), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
+        }, i + 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, p.nip), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, p.nama_pegawai), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, p.nama_fungsional), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, p.nama_struktural), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
           width: "200",
           className: "text-center"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -72410,7 +72410,7 @@ var PegawaiShow = /*#__PURE__*/function (_Component) {
       var pegawaiId = this.props.match.params.id_pegawai;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/pegawai/".concat(pegawaiId)).then(function (response) {
         _this2.setState({
-          pegawai: response.data
+          pegawai: response.data[0]
         });
       });
     }
@@ -72430,7 +72430,7 @@ var PegawaiShow = /*#__PURE__*/function (_Component) {
         className: "card-header"
       }, "NIP : ", pegawai.nip), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-body"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h6", null, "Nama Pegawai : ", pegawai.nama_pegawai), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h6", null, "Fungsional : ", pegawai.id_fungsional), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h6", null, "Struktural : ", pegawai.id_struktural), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h6", null, "Nama Pegawai : ", pegawai.nama_pegawai), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h6", null, "Fungsional : ", pegawai.nama_fungsional), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h6", null, "Struktural : ", pegawai.nama_struktural), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         className: "btn btn-primary",
         to: "/"
       }, "Kembali"))))));
