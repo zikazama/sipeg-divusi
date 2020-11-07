@@ -17,14 +17,13 @@ class PresensiController extends Controller
         $validatedData = $request->validate([
             'id_pegawai' => 'required',
             'jenis_presensi' => 'required',
-            'keterangan' => 'required',
             'tanggal' => 'required',
           ]);
 
           $presensi = \App\Models\Presensi::create();
-
+          $presensi->id_pegawai = $validatedData['id_pegawai'];
           $presensi->jenis_presensi = $validatedData['jenis_presensi'];
-          $presensi->keterangan = $validatedData['keterangan'];
+          $presensi->keterangan = $request->input('keterangan');
           $presensi->tanggal = $validatedData['tanggal'];
           $presensi->save();
 
@@ -46,13 +45,12 @@ class PresensiController extends Controller
     {
         $validatedData = $request->validate([
             'jenis_presensi' => 'required',
-            'keterangan' => 'required',
             'tanggal' => 'required'
           ]);
  
-        $presensi = \App\Models\Pegawai::find($id_presensi);
+        $presensi = \App\Models\Presensi::find($id_presensi);
         $presensi->jenis_presensi = $validatedData['jenis_presensi'];
-        $presensi->keterangan = $validatedData['keterangan'];
+        $presensi->keterangan = $request->input('keterangan');
         $presensi->tanggal = $validatedData['tanggal'];
         $presensi->save();
  
@@ -66,7 +64,7 @@ class PresensiController extends Controller
  
     public function delete($id_presensi)
     {
-        $presensi = \App\Models\Pegawai::find($id_presensi);
+        $presensi = \App\Models\Presensi::find($id_presensi);
         if(!empty($presensi)){
             $presensi->delete();
             $msg = [

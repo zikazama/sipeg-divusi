@@ -32,7 +32,7 @@ class PegawaiController extends Controller
           $tahun = date('y');
           $fungsional = strlen((string)$validatedData['id_fungsional']) == 1 ? '0'.$validatedData['id_fungsional'] : $validatedData['id_fungsional'] ;
           $struktural = strlen((string)$validatedData['id_struktural']) == 1 ? '0'.$validatedData['id_struktural'] : $validatedData['id_struktural'] ;
-          $nip_cari = (int)$tahun.$fungsional.$struktural;
+          $nip_cari = (int)$tahun.$fungsional;
           $cari = $pegawai_m->read_max_nip([
               ['nip','like',"$nip_cari%"]
           ]);

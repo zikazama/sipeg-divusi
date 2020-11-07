@@ -2,15 +2,25 @@ import axios from "axios";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import SweetAlert from "react-bootstrap-sweetalert";
+import Select from "react-select";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 class PresensiCreate extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            pegawai: [],
+            opt_pegawai: [],
+            opt_presensi: [
+                { value: "hadir", label: "Hadir" },
+                { value: "izin", label: "Izin" },
+                { value: "sakit", label: "Sakit" }
+            ],
             id_pegawai: "",
             jenis_presensi: "",
             keterangan: "",
-            tanggal: "",
+            tanggal: new Date(),
             alert: null,
             errors: []
         };
@@ -23,6 +33,32 @@ class PresensiCreate extends Component {
     handleFieldChange(event) {
         this.setState({
             [event.target.name]: event.target.value
+        });
+    }
+
+    handleFieldPegawai(e){
+        this.setState({id_pegawai:e.value})
+    }
+
+    handleFieldPresensi(e){
+        this.setState({jenis_presensi:e.value})
+    }
+
+    handleFieldTanggal(e,date){
+        this.setState({tanggal:date})
+    }
+
+    async componentDidMount() {
+        await axios.get("/api/pegawai").then(response => {
+            this.setState({
+                pegawai: response.data
+            });
+        });
+        this.state.pegawai.map((v, i) => {
+            this.state.opt_pegawai.push({
+                value: v.id_pegawai,
+                label: v.nip+' - '+v.nama_pegawai
+            });
         });
     }
 
@@ -45,7 +81,7 @@ class PresensiCreate extends Component {
     }
 
     onSuccess() {
-        this.props.history.push("/");
+        this.props.history.push("/presensi/all");
     }
 
     hideAlert() {
@@ -54,13 +90,27 @@ class PresensiCreate extends Component {
         });
     }
 
+    formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+    
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+    
+        return [year, month, day].join('-');
+    }
+
     handleCreateNewPresensi(event) {
         event.preventDefault();
         const presensi = {
             id_pegawai: this.state.id_pegawai,
             jenis_presensi: this.state.jenis_presensi,
             keterangan: this.state.keterangan,
-            tanggal: this.state.tanggal,
+            tanggal: this.formatDate(this.state.tanggal)
         };
         axios.post("/api/presensi/store", presensi).then(response => {
             var msg = response.data.success;
@@ -92,87 +142,67 @@ class PresensiCreate extends Component {
                         <div className="card">
                             <div className="card-header">Input Presensi</div>
                             <div className="card-body">
-                                <form onSubmit={this.handleCreateNewPegawai}>
-                                    
+                                <form onSubmit={this.handleCreateNewPresensi}>
                                     <div className="form-group">
-                                        <label htmlFor="nama_pegawai">
+                                        <label htmlFor="id_pegawai">
                                             Nama Pegawai
                                         </label>
-                                        <input
-                                            id="nama_pegawai"
-                                            type="text"
-                                            className={`form-control ${
-                                                this.hasErrorFor("nama_pegawai")
-                                                    ? "is-invalid"
-                                                    : ""
-                                            }`}
-                                            name="nama_pegawai"
-                                            value={this.state.nama_pegawai}
-                                            onChange={this.handleFieldChange}
+                                        <Select
+                                            name="id_pegawai"
+                                           
+                                            onChange={this.handleFieldPegawai.bind(this)}
+                                            options={this.state.opt_pegawai}
                                         />
-                                        {this.renderErrorFor("nama_pegawai")}
+                                        {this.renderErrorFor("id_pegawai")}
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="id_fungsional">
-                                            Fungsional
+                                        <label htmlFor="jenis_presensi">
+                                            Presensi
                                         </label>
-                                        <select
-                                            id="id_fungsional"
+                                        <Select
+                                            name="jenis_presensi"
+                                           
+                                            onChange={this.handleFieldPresensi.bind(this)}
+                                            options={this.state.opt_presensi}
+                                        />
+                                        {this.renderErrorFor("jenis_presensi")}
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="keterangan">
+                                            Keterangan
+                                        </label>
+                                        <textarea
+                                            id="keterangan"
                                             className={`form-control ${
-                                                this.hasErrorFor(
-                                                    "id_fungsional"
-                                                )
+                                                this.hasErrorFor("keterangan")
                                                     ? "is-invalid"
                                                     : ""
                                             }`}
-                                            name="id_fungsional"
-                                            value={this.state.id_fungsional}
+                                            name="keterangan"
+                                            value={this.state.keterangan}
                                             onChange={this.handleFieldChange}
-                                            
-                                        >
-                                            <option value="DEFAULT">
-                                                Pilih Fungsional
-                                            </option>
-                                            <option value="1">Engineer</option>
-                                            <option value="2">
-                                                Administrasi
-                                            </option>
-                                            <option value="3">Support</option>
-                                        </select>
-                                        {this.renderErrorFor("id_fungsional")}
+                                        ></textarea>
+                                        {this.renderErrorFor("keterangan")}
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="id_struktural">
-                                            Struktural
-                                        </label>
-                                        <select
-                                            id="id_struktural"
-                                            className={`form-control ${
-                                                this.hasErrorFor(
-                                                    "id_struktural"
-                                                )
-                                                    ? "is-invalid"
-                                                    : ""
-                                            }`}
-                                            name="id_struktural"
-                                            value={this.state.id_struktural}
-                                            onChange={this.handleFieldChange}
-                                            
-                                        >
-                                            <option value="DEFAULT">
-                                                Pilih Struktural
-                                            </option>
-                                            <option value="1">Manager</option>
-                                            <option value="2">
-                                                Team Leader
-                                            </option>
-                                            <option value="3">Staff</option>
-                                        </select>
-                                        {this.renderErrorFor("id_struktural")}
+                                        <label htmlFor="tanggal">Tanggal</label>
+                                        <br/>
+                                        <DatePicker
+                                            id="tanggal"
+                                            name="tanggal"
+                                            selected={this.state.tanggal}
+                                            onChange={date =>
+                                                this.setState({
+                                                    tanggal: date
+                                                })
+                                            }
+                                        />
+
+                                        {this.renderErrorFor("tanggal")}
                                     </div>
                                     <Link
                                         className="btn btn-secondary"
-                                        to={`/`}
+                                        to={`/presensi/all`}
                                     >
                                         Kembali
                                     </Link>

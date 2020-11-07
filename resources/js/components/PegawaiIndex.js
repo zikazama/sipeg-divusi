@@ -95,7 +95,7 @@ class PegawaiIndex extends Component {
                             <div className="card-body">
                                 <Link
                                     className="btn btn-primary btn-sm mb-3"
-                                    to="/create"
+                                    to="/pegawai/create"
                                 >
                                     Tambah Pegawai
                                 </Link>

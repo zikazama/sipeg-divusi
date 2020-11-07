@@ -2,6 +2,9 @@ import axios from "axios";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import SweetAlert from "react-bootstrap-sweetalert";
+import Select from "react-select";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 class PresensiEdit extends Component {
     constructor(props) {
@@ -10,7 +13,12 @@ class PresensiEdit extends Component {
             nama_pegawai: "",
             jenis_presensi: "",
             keterangan: "",
-            tanggal: "",
+            tanggal: new Date(),
+            opt_presensi: [
+                { value: "hadir", label: "Hadir" },
+                { value: "izin", label: "Izin" },
+                { value: "sakit", label: "Sakit" }
+            ],
             alert: null,
             message: "",
             errors: []
@@ -27,6 +35,10 @@ class PresensiEdit extends Component {
         });
     }
 
+    handleFieldPresensi(e){
+        this.setState({jenis_presensi:e.value})
+    }
+
     componentDidMount() {
         const presensiId = this.props.match.params.id_presensi;
 
@@ -34,10 +46,24 @@ class PresensiEdit extends Component {
             this.setState({
                 nama_pegawai: response.data[0].nama_pegawai,
                 jenis_presensi: response.data[0].jenis_presensi,
-                keterangan: response.data[0].keterangan,
-                tanggal: response.data[0].tanggal,
+                keterangan: response.data[0].keterangan ?? null,
+                tanggal: new Date(response.data[0].tanggal),
             });
         });
+    }
+
+    formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+    
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+    
+        return [year, month, day].join('-');
     }
 
     goToHome() {
@@ -59,7 +85,7 @@ class PresensiEdit extends Component {
     }
 
     onSuccess() {
-        this.props.history.push("/");
+        this.props.history.push("/presensi/all");
     }
 
     hideAlert() {
@@ -74,7 +100,7 @@ class PresensiEdit extends Component {
         const presensi = {
             jenis_presensi: this.state.jenis_presensi,
             keterangan: this.state.keterangan,
-            tanggal: this.state.tanggal,
+            tanggal: this.formatDate(this.state.tanggal),
         };
 
         const presensiId = this.props.match.params.id_presensi;
@@ -115,7 +141,7 @@ class PresensiEdit extends Component {
                                 Edit Pegawai
                             </div>
                             <div className="card-body">
-                                <form onSubmit={this.handleUpdatePegawai}>
+                                <form onSubmit={this.handleUpdatePresensi}>
                                 
                                     <div className="form-group">
                                         <label htmlFor="nama_pegawai">
@@ -132,13 +158,58 @@ class PresensiEdit extends Component {
                                             name="nama_pegawai"
                                             value={this.state.nama_pegawai}
                                             onChange={this.handleFieldChange}
+                                            readOnly
                                         />
                                         {this.renderErrorFor("nama_pegawai")}
                                     </div>
-                                    
+                                    <div className="form-group">
+                                        <label htmlFor="jenis_presensi">
+                                            Presensi
+                                        </label>
+                                        <Select
+                                            name="jenis_presensi"
+                                            value={this.state.opt_presensi.filter(option => option.value === this.state.jenis_presensi)}
+                                            onChange={this.handleFieldPresensi.bind(this)}
+                                            options={this.state.opt_presensi}
+                                        />
+                                        {this.renderErrorFor("jenis_presensi")}
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="keterangan">
+                                            Keterangan
+                                        </label>
+                                        <textarea
+                                            id="keterangan"
+                                            className={`form-control ${
+                                                this.hasErrorFor("keterangan")
+                                                    ? "is-invalid"
+                                                    : ""
+                                            }`}
+                                            name="keterangan"
+                                            value={this.state.keterangan}
+                                            onChange={this.handleFieldChange}
+                                        ></textarea>
+                                        {this.renderErrorFor("keterangan")}
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="tanggal">Tanggal</label>
+                                        <br/>
+                                        <DatePicker
+                                            id="tanggal"
+                                            name="tanggal"
+                                            selected={this.state.tanggal}
+                                            onChange={date =>
+                                                this.setState({
+                                                    tanggal: date
+                                                })
+                                            }
+                                        />
+
+                                        {this.renderErrorFor("tanggal")}
+                                    </div>
                                     <Link
                                         className="btn btn-secondary"
-                                        to={`/`}
+                                        to={`/presensi/all`}
                                     >
                                         Kembali
                                     </Link>

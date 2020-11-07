@@ -36,7 +36,7 @@ class PresensiShow extends Component {
                                 <h6>Tanggal : {presensi.tanggal}</h6>
                                 <h6>Presensi : {presensi.jenis_presensi}</h6>
                                 <h6>Keterangan : {presensi.keterangan}</h6>
-                                <Link className="btn btn-primary" to={`/presensi`}>
+                                <Link className="btn btn-primary" to={`/presensi/all`}>
                                     Kembali
                                 </Link>
                             </div>

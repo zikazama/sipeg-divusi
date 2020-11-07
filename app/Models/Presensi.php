@@ -15,7 +15,7 @@ class Presensi extends Model
     protected $primaryKey = 'id_presensi';
 
     public function read_full(){
-        $query = DB::table($this->table)->join('pegawai','pegawai.id_pegawai','=','presensi.id_presensi')
+        $query = DB::table($this->table)->join('pegawai','pegawai.id_pegawai','=','presensi.id_pegawai')
                 ->join('fungsional','fungsional.id_fungsional','=','pegawai.id_fungsional')
                 ->join('struktural','struktural.id_struktural','=','pegawai.id_struktural')
                 ->get();
@@ -23,7 +23,7 @@ class Presensi extends Model
     }
 
     public function read_full_where($where){
-        $query = DB::table($this->table)->join('pegawai','pegawai.id_pegawai','=','presensi.id_presensi')
+        $query = DB::table($this->table)->join('pegawai','pegawai.id_pegawai','=','presensi.id_pegawai')
                 ->join('fungsional','fungsional.id_fungsional','=','pegawai.id_fungsional')
                 ->join('struktural','struktural.id_struktural','=','pegawai.id_struktural')
                 ->where($where)
