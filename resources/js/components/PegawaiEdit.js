@@ -134,7 +134,7 @@ class PegawaiEdit extends Component {
                                     >
                                         Kembali
                                     </Link>
-                                    <button className="btn btn-primary">
+                                    <button className="btn btn-primary float-right">
                                         Perbarui
                                     </button>
                                     {this.state.alert}

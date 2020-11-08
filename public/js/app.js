@@ -92512,7 +92512,7 @@ var PegawaiEdit = /*#__PURE__*/function (_Component) {
         className: "btn btn-secondary",
         to: "/"
       }, "Kembali"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-primary"
+        className: "btn btn-primary float-right"
       }, "Perbarui"), this.state.alert))))));
     }
   }]);
@@ -93438,7 +93438,7 @@ var PresensiEdit = /*#__PURE__*/function (_Component) {
         className: "btn btn-secondary",
         to: "/presensi/all"
       }, "Kembali"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-primary"
+        className: "btn btn-primary float-right"
       }, "Perbarui"), this.state.alert))))));
     }
   }]);
