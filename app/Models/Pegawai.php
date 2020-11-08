@@ -50,4 +50,6 @@ class Pegawai extends Model
                 ->first();
         return $query;
     }
+
+    
 }

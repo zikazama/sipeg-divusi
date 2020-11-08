@@ -19,5 +19,7 @@ Route::view('/pegawai/{id}', 'app');
 Route::view('/presensi', 'app');
 Route::view('/presensi/edit/{id}', 'app');
 Route::view('/presensi/{id}', 'app');
+Route::view('/laporan/form', 'app');
+Route::view('/laporan/cek/{year}/{month}', 'app');
 Route::view('/', 'app');
 Route::view('/{path}', 'app');

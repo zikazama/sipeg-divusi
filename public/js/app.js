@@ -79166,6 +79166,284 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/react-month-year-picker/dist/index.es.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/react-month-year-picker/dist/index.es.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+function styleInject(css, ref) {
+  if ( ref === void 0 ) ref = {};
+  var insertAt = ref.insertAt;
+
+  if (!css || typeof document === 'undefined') { return; }
+
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var style = document.createElement('style');
+  style.type = 'text/css';
+
+  if (insertAt === 'top') {
+    if (head.firstChild) {
+      head.insertBefore(style, head.firstChild);
+    } else {
+      head.appendChild(style);
+    }
+  } else {
+    head.appendChild(style);
+  }
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+}
+
+var css = "@import url(\"https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css\");\n@import url(\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\");\n@font-face {\n  font-family: 'Open Sans';\n  font-style: italic;\n  font-weight: 300;\n  src: local('Open Sans Light Italic'), local('OpenSans-LightItalic'), url(https://fonts.gstatic.com/s/opensans/v15/memnYaGs126MiZpBA-UFUKWyV9hrIqY.ttf) format('truetype');\n}\n@font-face {\n  font-family: 'Open Sans';\n  font-style: italic;\n  font-weight: 400;\n  src: local('Open Sans Italic'), local('OpenSans-Italic'), url(https://fonts.gstatic.com/s/opensans/v15/mem6YaGs126MiZpBA-UFUK0Zdcg.ttf) format('truetype');\n}\n@font-face {\n  font-family: 'Open Sans';\n  font-style: italic;\n  font-weight: 700;\n  src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'), url(https://fonts.gstatic.com/s/opensans/v15/memnYaGs126MiZpBA-UFUKWiUNhrIqY.ttf) format('truetype');\n}\n@font-face {\n  font-family: 'Open Sans';\n  font-style: normal;\n  font-weight: 300;\n  src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN_r8OUuhs.ttf) format('truetype');\n}\n@font-face {\n  font-family: 'Open Sans';\n  font-style: normal;\n  font-weight: 400;\n  src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFVZ0e.ttf) format('truetype');\n}\n@font-face {\n  font-family: 'Open Sans';\n  font-style: normal;\n  font-weight: 700;\n  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN7rgOUuhs.ttf) format('truetype');\n}\n.month-year-picker {\n  margin: auto;\n  width: 400px;\n  margin-top: 55px;\n}\n.month-year-picker .caption {\n  padding-left: 10px;\n  margin-bottom: 20px;\n  display: block;\n}\n.month-year-picker .year-picker {\n  position: relative;\n  width: 100%;\n  margin-bottom: 20px;\n}\n.month-year-picker .year-picker span {\n  font-size: 25px;\n  color: #5186ed;\n  text-align: center;\n  width: 100%;\n  display: block;\n}\n.month-year-picker .year-picker .controls {\n  position: absolute;\n  right: 0;\n  width: 80px;\n  top: 0;\n  height: 100%;\n  display: flex;\n}\n.month-year-picker .year-picker .controls .fa {\n  margin: auto;\n  cursor: pointer;\n  font-size: 25px;\n}\n.month-year-picker .year-picker .controls .fa.disabled {\n  cursor: default;\n  opacity: 0.3;\n}\n.month-year-picker .month-picker {\n  position: relative;\n  width: 100%;\n}\n.month-year-picker .month-picker > div {\n  position: relative;\n  width: 100%;\n  margin: auto;\n  display: block;\n}\n.month-year-picker .month-picker > div > div {\n  background-color: #ddd;\n  color: cornflowerblue;\n  height: 55px;\n  margin: 10px;\n  width: 20%;\n  display: inline-flex;\n  cursor: pointer;\n}\n.month-year-picker .month-picker > div > div.selected {\n  background-color: #5186ed;\n  color: #FFFFFF;\n}\n.month-year-picker .month-picker > div > div span {\n  margin: auto;\n  font-size: 15px;\n  font-style: normal;\n}\n";
+styleInject(css);
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
+
+var inherits = function (subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      enumerable: false,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+};
+
+var possibleConstructorReturn = function (self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return call && (typeof call === "object" || typeof call === "function") ? call : self;
+};
+
+var MonthYearPicker = function (_PureComponent) {
+  inherits(MonthYearPicker, _PureComponent);
+
+  function MonthYearPicker(props) {
+    classCallCheck(this, MonthYearPicker);
+
+    var _this = possibleConstructorReturn(this, (MonthYearPicker.__proto__ || Object.getPrototypeOf(MonthYearPicker)).call(this, props));
+
+    _this.handleOnClickLeftArrow = _this.handleOnClickLeftArrow.bind(_this);
+    _this.handleOnClickRightArrow = _this.handleOnClickRightArrow.bind(_this);
+    return _this;
+  }
+
+  createClass(MonthYearPicker, [{
+    key: 'handleOnClickLeftArrow',
+    value: function handleOnClickLeftArrow() {
+      if (this.props.selectedYear <= this.props.minYear) {
+        return;
+      }
+      this.props.onChangeYear(this.props.selectedYear - 1);
+    }
+  }, {
+    key: 'handleOnClickRightArrow',
+    value: function handleOnClickRightArrow() {
+      if (this.props.selectedYear >= this.props.maxYear) {
+        return;
+      }
+      this.props.onChangeYear(this.props.selectedYear + 1);
+    }
+  }, {
+    key: 'renderMonth',
+    value: function renderMonth(month) {
+      var _this2 = this;
+
+      var text = '';
+      switch (month) {
+        case 1:
+          text = 'Jan';
+          break;
+        case 2:
+          text = 'Feb';
+          break;
+        case 3:
+          text = 'Mar';
+          break;
+        case 4:
+          text = 'Apr';
+          break;
+        case 5:
+          text = 'May';
+          break;
+        case 6:
+          text = 'Jun';
+          break;
+        case 7:
+          text = 'Jul';
+          break;
+        case 8:
+          text = 'Aug';
+          break;
+        case 9:
+          text = 'Sep';
+          break;
+        case 10:
+          text = 'Oct';
+          break;
+        case 11:
+          text = 'Nov';
+          break;
+        case 12:
+          text = 'Dec';
+          break;
+        default:
+          break;
+      }
+      var className = this.props.selectedMonth === month ? 'selected' : '';
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+        'div',
+        { className: className, role: 'button', tabIndex: 0, onClick: function onClick() {
+            return _this2.props.onChangeMonth(month);
+          } },
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+          'span',
+          null,
+          text
+        )
+      );
+    }
+  }, {
+    key: 'renderLeftArrowButton',
+    value: function renderLeftArrowButton() {
+      if (this.props.selectedYear === this.props.minYear) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('i', { className: 'fa fa-chevron-left disabled' });
+      }
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('i', { role: 'button', tabIndex: 0, onClick: this.handleOnClickLeftArrow, className: 'fa fa-chevron-left' });
+    }
+  }, {
+    key: 'renderRightArrowButton',
+    value: function renderRightArrowButton() {
+      if (this.props.selectedYear === this.props.maxYear) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('i', { className: 'fa fa-chevron-right disabled' });
+      }
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('i', { role: 'button', tabIndex: 0, onClick: this.handleOnClickRightArrow, className: 'fa fa-chevron-right' });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+        'div',
+        { className: 'month-year-picker' },
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+          'span',
+          { className: 'caption' },
+          this.props.caption
+        ),
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+          'div',
+          { className: 'year-picker' },
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+            'span',
+            null,
+            this.props.selectedYear
+          ),
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+            'div',
+            { className: 'controls' },
+            this.renderLeftArrowButton(),
+            this.renderRightArrowButton()
+          )
+        ),
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+          'div',
+          { className: 'month-picker' },
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+            'div',
+            null,
+            this.renderMonth(1),
+            this.renderMonth(2),
+            this.renderMonth(3),
+            this.renderMonth(4)
+          ),
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+            'div',
+            null,
+            this.renderMonth(5),
+            this.renderMonth(6),
+            this.renderMonth(7),
+            this.renderMonth(8)
+          ),
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+            'div',
+            null,
+            this.renderMonth(9),
+            this.renderMonth(10),
+            this.renderMonth(11),
+            this.renderMonth(12)
+          )
+        )
+      );
+    }
+  }]);
+  return MonthYearPicker;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+
+MonthYearPicker.propTypes = {
+  caption: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
+  selectedYear: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number.isRequired,
+  selectedMonth: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number.isRequired,
+  minYear: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number.isRequired,
+  maxYear: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number.isRequired,
+  onChangeYear: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired,
+  onChangeMonth: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired
+};
+
+MonthYearPicker.defaultProps = {
+  caption: 'Select month and year'
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (MonthYearPicker);
+//# sourceMappingURL=index.es.js.map
+
+
+/***/ }),
+
 /***/ "./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js":
 /*!***************************************************************************!*\
   !*** ./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js ***!
@@ -91271,6 +91549,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PresensiCreate__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./PresensiCreate */ "./resources/js/components/PresensiCreate.js");
 /* harmony import */ var _PresensiShow__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./PresensiShow */ "./resources/js/components/PresensiShow.js");
 /* harmony import */ var _PresensiEdit__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./PresensiEdit */ "./resources/js/components/PresensiEdit.js");
+/* harmony import */ var _FormLaporan__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./FormLaporan */ "./resources/js/components/FormLaporan.js");
+/* harmony import */ var _LaporanIndex__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./LaporanIndex */ "./resources/js/components/LaporanIndex.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -91292,6 +91572,8 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
 
 
 
@@ -91345,6 +91627,12 @@ var App = /*#__PURE__*/function (_Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/presensi/:id_presensi",
         component: _PresensiShow__WEBPACK_IMPORTED_MODULE_10__["default"]
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        path: "/laporan/form",
+        component: _FormLaporan__WEBPACK_IMPORTED_MODULE_12__["default"]
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        path: "/laporan/cek/:year/:month",
+        component: _LaporanIndex__WEBPACK_IMPORTED_MODULE_13__["default"]
       }))));
     }
   }]);
@@ -91353,6 +91641,208 @@ var App = /*#__PURE__*/function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App, null), document.getElementById('app'));
+
+/***/ }),
+
+/***/ "./resources/js/components/FormLaporan.js":
+/*!************************************************!*\
+  !*** ./resources/js/components/FormLaporan.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_bootstrap_sweetalert__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap-sweetalert */ "./node_modules/react-bootstrap-sweetalert/dist/index.js");
+/* harmony import */ var react_bootstrap_sweetalert__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_sweetalert__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_month_year_picker__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-month-year-picker */ "./node_modules/react-month-year-picker/dist/index.es.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+
+var FormLaporan = /*#__PURE__*/function (_Component) {
+  _inherits(FormLaporan, _Component);
+
+  var _super = _createSuper(FormLaporan);
+
+  function FormLaporan(props) {
+    var _this;
+
+    _classCallCheck(this, FormLaporan);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      month: new Date().getMonth() + 1,
+      year: new Date().getFullYear(),
+      alert: null,
+      errors: []
+    };
+    _this.handleFieldChange = _this.handleFieldChange.bind(_assertThisInitialized(_this));
+    _this.handleCreateNewPresensi = _this.handleCreateNewLaporan.bind(_assertThisInitialized(_this));
+    _this.hasErrorFor = _this.hasErrorFor.bind(_assertThisInitialized(_this));
+    _this.renderErrorFor = _this.renderErrorFor.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(FormLaporan, [{
+    key: "handleFieldChange",
+    value: function handleFieldChange(event) {
+      this.setState(_defineProperty({}, event.target.name, event.target.value));
+    }
+  }, {
+    key: "goToHome",
+    value: function goToHome() {
+      var _this2 = this;
+
+      var getAlert = function getAlert() {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap_sweetalert__WEBPACK_IMPORTED_MODULE_3___default.a, {
+          success: true,
+          title: "Success!",
+          onConfirm: function onConfirm() {
+            return _this2.onSuccess();
+          },
+          onCancel: _this2.hideAlert(),
+          timeout: 2000,
+          confirmBtnText: "Oke Siap"
+        }, "Data Berhasil Ditemukan");
+      };
+
+      this.setState({
+        alert: getAlert()
+      });
+    }
+  }, {
+    key: "onSuccess",
+    value: function onSuccess() {
+      this.props.history.push("/laporan/cek/".concat(this.state.year, "/").concat(this.state.month));
+    }
+  }, {
+    key: "hideAlert",
+    value: function hideAlert() {
+      this.setState({
+        alert: null
+      });
+    }
+  }, {
+    key: "formatDate",
+    value: function formatDate(date) {
+      var d = new Date(date),
+          month = "" + (d.getMonth() + 1),
+          day = "" + d.getDate(),
+          year = d.getFullYear();
+      if (month.length < 2) month = "0" + month;
+      if (day.length < 2) day = "0" + day;
+      return [year, month, day].join("-");
+    }
+  }, {
+    key: "handleCreateNewLaporan",
+    value: function handleCreateNewLaporan(event, year, month) {
+      var _this3 = this;
+
+      event.preventDefault();
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/laporan/".concat(year, "/").concat(month)).then(function (response) {
+        var msg = response.data.success;
+
+        if (msg == true) {
+          return _this3.goToHome();
+        }
+      });
+    }
+  }, {
+    key: "hasErrorFor",
+    value: function hasErrorFor(field) {
+      return !!this.state.errors[field];
+    }
+  }, {
+    key: "renderErrorFor",
+    value: function renderErrorFor(field) {
+      if (this.hasErrorFor(field)) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
+          className: "invalid-feedback"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("strong", null, this.state.errors[field][0]));
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this4 = this;
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "container py-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "row justify-content-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-md-6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "card"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "card-header"
+      }, "Form Laporan"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "card-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
+        onSubmit: function onSubmit(event) {
+          return _this4.handleCreateNewLaporan(event, _this4.state.year, _this4.state.month);
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "tanggal"
+      }, "Tanggal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_month_year_picker__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        selectedMonth: this.state.month,
+        selectedYear: this.state.year,
+        minYear: 2000,
+        maxYear: 2030,
+        onChangeYear: function onChangeYear(year) {
+          return _this4.setState({
+            year: year
+          });
+        },
+        onChangeMonth: function onChangeMonth(month) {
+          return _this4.setState({
+            month: month
+          });
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", null, "Bulan yang dipilih: ", this.state.month), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", null, "Tahun yang dipilih: ", this.state.year), this.renderErrorFor("tanggal")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-primary btn-block"
+      }, "Cek Laporan"), this.state.alert))))));
+    }
+  }]);
+
+  return FormLaporan;
+}(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (FormLaporan);
 
 /***/ }),
 
@@ -91388,21 +91878,225 @@ var Header = function Header() {
     className: "collapse navbar-collapse",
     id: "navbarNav"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-    className: "navbar-nav mr-auto"
+    className: "navbar-nav ml-auto"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "nav-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "nav-link",
     to: "/"
   }, "Data Master")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    "class": "nav-item"
+    className: "nav-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "nav-link",
     to: "/presensi/all"
-  }, "Presensi")))));
+  }, "Presensi")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "nav-item"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    className: "nav-link",
+    to: "/laporan/form"
+  }, "Laporan Presensi")))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Header);
+
+/***/ }),
+
+/***/ "./resources/js/components/LaporanIndex.js":
+/*!*************************************************!*\
+  !*** ./resources/js/components/LaporanIndex.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_bootstrap_sweetalert__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap-sweetalert */ "./node_modules/react-bootstrap-sweetalert/dist/index.js");
+/* harmony import */ var react_bootstrap_sweetalert__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_sweetalert__WEBPACK_IMPORTED_MODULE_3__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+var LaporanIndex = /*#__PURE__*/function (_Component) {
+  _inherits(LaporanIndex, _Component);
+
+  var _super = _createSuper(LaporanIndex);
+
+  function LaporanIndex() {
+    var _this;
+
+    _classCallCheck(this, LaporanIndex);
+
+    _this = _super.call(this);
+    _this.state = {
+      pegawai: [],
+      msg: null,
+      type: null,
+      flash: false,
+      alert: null
+    };
+    return _this;
+  }
+
+  _createClass(LaporanIndex, [{
+    key: "hideAlert",
+    value: function hideAlert() {
+      this.setState({
+        alert: null
+      });
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      var month = this.props.match.params.month;
+      var year = this.props.match.params.year;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/laporan/".concat(year, "/").concat(month)).then(function (response) {
+        _this2.setState({
+          pegawai: response.data.hasil
+        });
+      });
+    }
+  }, {
+    key: "confirmDelete",
+    value: function confirmDelete(id) {
+      var _this3 = this;
+
+      var getAlert = function getAlert() {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap_sweetalert__WEBPACK_IMPORTED_MODULE_3___default.a, {
+          warning: true,
+          showCancel: true,
+          confirmBtnText: "Hapus",
+          cancelBtnText: "Batalkan",
+          confirmBtnBsStyle: "default",
+          cancelBtnBsStyle: "danger",
+          title: "Anda yakin ingin menghapus ?",
+          onConfirm: function onConfirm() {
+            return _this3.deleteItem(id);
+          },
+          onCancel: function onCancel() {
+            return _this3.hideAlert();
+          },
+          focusCancelBtn: true
+        });
+      };
+
+      this.setState({
+        alert: getAlert()
+      });
+    }
+  }, {
+    key: "deleteItem",
+    value: function deleteItem(id) {
+      var _this4 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/pegawai/delete/".concat(id)).then(function (response) {
+        var msg = response.data.success;
+
+        if (msg == true) {
+          _this4.hideAlert();
+
+          _this4.goToHome();
+        }
+      });
+    }
+  }, {
+    key: "goToHome",
+    value: function goToHome() {
+      var _this5 = this;
+
+      var getAlert = function getAlert() {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap_sweetalert__WEBPACK_IMPORTED_MODULE_3___default.a, {
+          success: true,
+          title: "Success!",
+          onConfirm: function onConfirm() {
+            return _this5.onSuccess();
+          },
+          onCancel: _this5.hideAlert(),
+          timeout: 2000,
+          confirmBtnText: "Ok"
+        }, "Pegawai sudah dihapus");
+      };
+
+      this.setState({
+        alert: getAlert()
+      });
+    }
+  }, {
+    key: "onSuccess",
+    value: function onSuccess() {
+      this.componentDidMount();
+      this.hideAlert();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var pegawai = this.state.pegawai;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "container py-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "row justify-content-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-md-10"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "card"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "card-header"
+      }, "Semua Laporan"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "card-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "table-responsive"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("table", {
+        className: "table table-bordered table-hover"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+        width: "50",
+        className: "text-center"
+      }, "No"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "NIP"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Nama Pegawai"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Fungsional"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Struktural"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Hadir"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Sakit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Izin"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Alpa"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Total"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, pegawai.map(function (p, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
+          key: i
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
+          width: "50",
+          className: "text-center"
+        }, i + 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, p.nip), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, p.nama_pegawai), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, p.nama_fungsional), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, p.nama_struktural), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, p.hadir), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, p.sakit), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, p.izin), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, p.alpa), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, p.total));
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", null, "Note: Total merupakan hari kerja dalam satu bulan (tidak termasuk hari libur)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        className: "btn btn-secondary",
+        to: "/laporan/form"
+      }, "Kembali"), this.state.alert))))));
+    }
+  }]);
+
+  return LaporanIndex;
+}(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (LaporanIndex);
 
 /***/ }),
 
@@ -91617,7 +92311,7 @@ var PegawaiCreate = /*#__PURE__*/function (_Component) {
         className: "btn btn-secondary",
         to: "/"
       }, "Kembali"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-primary"
+        className: "btn btn-primary float-right"
       }, "Tambah"), this.state.alert))))));
     }
   }]);
@@ -92452,7 +93146,7 @@ var PresensiCreate = /*#__PURE__*/function (_Component) {
         className: "btn btn-secondary",
         to: "/presensi/all"
       }, "Kembali"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("button", {
-        className: "btn btn-primary"
+        className: "btn btn-primary float-right"
       }, "Tambah"), this.state.alert))))));
     }
   }]);

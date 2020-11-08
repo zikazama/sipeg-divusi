@@ -10,6 +10,8 @@ import PresensiIndex from "./PresensiIndex";
 import PresensiCreate from "./PresensiCreate";
 import PresensiShow from "./PresensiShow";
 import PresensiEdit from "./PresensiEdit";
+import FormLaporan from "./FormLaporan";
+import LaporanIndex from "./LaporanIndex";
 
 class App extends Component {
     render() {
@@ -26,6 +28,8 @@ class App extends Component {
                         <Route path='/presensi/create' component={PresensiCreate}/>
                         <Route path='/presensi/edit/:id_presensi' component={PresensiEdit}/>
                         <Route path='/presensi/:id_presensi' component={PresensiShow}/>
+                        <Route path='/laporan/form' component={FormLaporan}/>
+                        <Route path='/laporan/cek/:year/:month' component={LaporanIndex}/>
                     </Switch>
                 </div>
             </BrowserRouter>

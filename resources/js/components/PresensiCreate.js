@@ -206,7 +206,7 @@ class PresensiCreate extends Component {
                                     >
                                         Kembali
                                     </Link>
-                                    <button className="btn btn-primary">
+                                    <button className="btn btn-primary float-right">
                                         Tambah
                                     </button>
                                     {this.state.alert}

@@ -17,7 +17,7 @@ const Header = () => {
                 <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav mr-auto">
+                <ul className="navbar-nav ml-auto">
                     <li className="nav-item">
                         <Link className="nav-link" to="/">
                             Data Master
@@ -26,6 +26,11 @@ const Header = () => {
                     <li className="nav-item">
                         <Link className="nav-link" to="/presensi/all">
                             Presensi
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/laporan/form">
+                            Laporan Presensi
                         </Link>
                     </li>
                 </ul>

@@ -30,4 +30,28 @@ class Presensi extends Model
                 ->get();
         return $query;
     }
+
+    public function hadir($year,$month,$id_pegawai){
+        $query = DB::table($this->table)->where('jenis_presensi','=','hadir')
+                ->where('tanggal','like',"$year-$month%")
+                ->where('id_pegawai','=',$id_pegawai)
+                ->count();
+        return $query;
+    }
+
+    public function sakit($year,$month,$id_pegawai){
+        $query = DB::table($this->table)->where('jenis_presensi','=','sakit')
+                ->where('tanggal','like',$year.'-'.$month.'%')
+                ->where('id_pegawai','=',$id_pegawai)
+                ->count();
+        return $query;
+    }
+
+    public function izin($year,$month,$id_pegawai){
+        $query = DB::table($this->table)->where('jenis_presensi','=','izin')
+                ->where('tanggal','like',$year.'-'.$month.'%')
+                ->where('id_pegawai','=',$id_pegawai)
+                ->count();
+        return $query;
+    }
 }

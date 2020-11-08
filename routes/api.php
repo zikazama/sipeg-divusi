@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PresensiController;
+use App\Http\Controllers\LaporanController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +30,5 @@ Route::get('/presensi/edit/{id}', [PresensiController::class, 'getPresensi']);
 Route::get('/presensi/{id}', [PresensiController::class ,'getPresensi']);
 Route::put('/presensi/{id}', [PresensiController::class, 'update']);
 Route::delete('/presensi/delete/{id}', [PresensiController::class,'delete']);
+
+Route::get('/laporan/{year}/{month}', [LaporanController::class ,'getLaporan']);
