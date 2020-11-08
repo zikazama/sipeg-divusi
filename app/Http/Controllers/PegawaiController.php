@@ -56,6 +56,8 @@ class PegawaiController extends Controller
                 $nip_before = (int)$nip_cari.'0'.$kumpulan_nip[0];
             } else if (strlen((string)$kumpulan_nip[0]) == 4){
                 $nip_before = (int)$nip_cari.$kumpulan_nip[0];
+            } else {
+                $nip_before = (int)$nip_cari.'0000';
             }
             $nip_baru = $nip_before + 1;
         }

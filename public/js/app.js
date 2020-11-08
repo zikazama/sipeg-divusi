@@ -92929,6 +92929,7 @@ var PresensiCreate = /*#__PURE__*/function (_Component) {
       id_pegawai: "",
       jenis_presensi: "",
       keterangan: "",
+      isDisabled: true,
       tanggal: new Date(),
       alert: null,
       errors: []
@@ -92984,14 +92985,20 @@ var PresensiCreate = /*#__PURE__*/function (_Component) {
                 });
 
               case 2:
-                this.state.pegawai.map(function (v, i) {
+                _context.next = 4;
+                return this.state.pegawai.map(function (v, i) {
                   _this2.state.opt_pegawai.push({
                     value: v.id_pegawai,
                     label: v.nip + ' - ' + v.nama_pegawai
                   });
                 });
 
-              case 3:
+              case 4:
+                this.setState({
+                  isDisabled: false
+                });
+
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -93109,6 +93116,7 @@ var PresensiCreate = /*#__PURE__*/function (_Component) {
         htmlFor: "id_pegawai"
       }, "Nama Pegawai"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_5__["default"], {
         name: "id_pegawai",
+        isDisabled: this.state.isDisabled,
         onChange: this.handleFieldPegawai.bind(this),
         options: this.state.opt_pegawai
       }), this.renderErrorFor("id_pegawai")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {

@@ -15,10 +15,10 @@ class CreatePresensisTable extends Migration
     {
         Schema::create('presensi', function (Blueprint $table) {
             $table->bigIncrements('id_presensi');
-            $table->integer('id_pegawai');
-            $table->enum('jenis_presensi',['hadir','sakit','izin','alfa']);
-            $table->string('keterangan');
-            $table->date('tanggal');
+            $table->integer('id_pegawai')->nullable();
+            $table->enum('jenis_presensi',['hadir','sakit','izin','alfa'])->nullable();
+            $table->string('keterangan')->nullable();
+            $table->date('tanggal')->nullable();
             $table->timestamps();
         });
     }

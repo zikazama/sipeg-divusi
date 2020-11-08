@@ -15,10 +15,10 @@ class CreatePegawaisTable extends Migration
     {
         Schema::create('pegawai', function (Blueprint $table) {
             $table->bigIncrements('id_pegawai');
-            $table->integer('nip');
-            $table->string('nama_pegawai');
-            $table->integer('id_fungsional');
-            $table->integer('id_struktural');
+            $table->integer('nip')->nullable();
+            $table->string('nama_pegawai')->nullable();
+            $table->integer('id_fungsional')->nullable();
+            $table->integer('id_struktural')->nullable();
             $table->timestamps();
         });
     }

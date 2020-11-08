@@ -20,6 +20,7 @@ class PresensiCreate extends Component {
             id_pegawai: "",
             jenis_presensi: "",
             keterangan: "",
+            isDisabled: true,
             tanggal: new Date(),
             alert: null,
             errors: []
@@ -54,11 +55,14 @@ class PresensiCreate extends Component {
                 pegawai: response.data
             });
         });
-        this.state.pegawai.map((v, i) => {
+        await this.state.pegawai.map((v, i) => {
             this.state.opt_pegawai.push({
                 value: v.id_pegawai,
                 label: v.nip+' - '+v.nama_pegawai
             });
+        });
+        this.setState({
+            isDisabled: false
         });
     }
 
@@ -149,7 +153,7 @@ class PresensiCreate extends Component {
                                         </label>
                                         <Select
                                             name="id_pegawai"
-                                           
+                                            isDisabled={this.state.isDisabled}
                                             onChange={this.handleFieldPegawai.bind(this)}
                                             options={this.state.opt_pegawai}
                                         />
