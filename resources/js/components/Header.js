@@ -9,22 +9,22 @@ const Header = () => {
             </Link>
 
             <button
-                class="navbar-toggler"
+                className="navbar-toggler"
                 type="button"
                 data-toggle="collapse"
                 data-target="#navbarNav"
             >
-                <span class="navbar-toggler-icon"></span>
+                <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <Link class="nav-link" to="/">
+            <div className="collapse navbar-collapse" id="navbarNav">
+                <ul className="navbar-nav mr-auto">
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/">
                             Data Master
                         </Link>
                     </li>
-                    <li class="nav-item">
-                        <Link class="nav-link" to="/presensi/all">
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/presensi/all">
                             Presensi
                         </Link>
                     </li>

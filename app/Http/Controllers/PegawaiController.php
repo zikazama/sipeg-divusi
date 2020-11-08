@@ -20,12 +20,7 @@ class PegawaiController extends Controller
             'id_struktural' => 'required',
           ]);
 
-        //   $project = \App\Models\Pegawai::create([
-        //     'nip' => $validatedData['nip'],
-        //     'nama_pegawai' => $validatedData['nama_pegawai'],
-        //     'id_fungsional' => $validatedData['id_fungsional'],
-        //     'id_struktural' => $validatedData['id_struktural'],
-        //   ]);
+        
         $pegawai_m = new Pegawai();
           $pegawai = \App\Models\Pegawai::create();
 
@@ -33,15 +28,37 @@ class PegawaiController extends Controller
           $fungsional = strlen((string)$validatedData['id_fungsional']) == 1 ? '0'.$validatedData['id_fungsional'] : $validatedData['id_fungsional'] ;
           $struktural = strlen((string)$validatedData['id_struktural']) == 1 ? '0'.$validatedData['id_struktural'] : $validatedData['id_struktural'] ;
           $nip_cari = (int)$tahun.$fungsional;
-          $cari = $pegawai_m->read_max_nip([
-              ['nip','like',"$nip_cari%"]
-          ]);
-          if($cari == null){
-              $nip_baru = (int)$nip_cari.'0001';
-          } else {
-              $nip_before = (int)$cari->nip;
-              $nip_baru = $nip_before + 1;
-          }
+        //   $cari = $pegawai_m->read_max_nip([
+        //       ['nip','like',"$nip_cari%"]
+        //   ]);
+        //   if($cari == null){
+        //       $nip_baru = (int)$nip_cari.'0001';
+        //   } else {
+        //       $nip_before = (int)$cari->nip;
+        //       $nip_baru = $nip_before + 1;
+        //   }
+        $kumpulan_nip = [];
+        $cari = $pegawai_m->read_max_all();
+        if($cari == null){
+            $nip_baru = (int)$nip_cari.'0001';
+        } else {
+            foreach($cari as $data){
+                $data = json_decode(json_encode($data), true);
+                $nip_push = substr($data['nip'],4);
+                array_push($kumpulan_nip,$nip_push);
+            }
+            rsort($kumpulan_nip);
+            if(strlen((string)$kumpulan_nip[0]) == 1){
+                $nip_before = (int)$nip_cari.'000'.$kumpulan_nip[0];
+            } else if (strlen((string)$kumpulan_nip[0]) == 2){
+                $nip_before = (int)$nip_cari.'00'.$kumpulan_nip[0];
+            } else if (strlen((string)$kumpulan_nip[0]) == 3){
+                $nip_before = (int)$nip_cari.'0'.$kumpulan_nip[0];
+            } else if (strlen((string)$kumpulan_nip[0]) == 4){
+                $nip_before = (int)$nip_cari.$kumpulan_nip[0];
+            }
+            $nip_baru = $nip_before + 1;
+        }
 
           $pegawai->nip = $nip_baru;
           $pegawai->nama_pegawai = $validatedData['nama_pegawai'];

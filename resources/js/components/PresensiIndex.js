@@ -89,7 +89,7 @@ class PresensiIndex extends Component {
         return (
             <div className="container py-4">
                 <div className="row justify-content-center">
-                    <div className="col-md-8">
+                    <div className="col-md-10">
                         <div className="card">
                             <div className="card-header">Semua Presensi</div>
                             <div className="card-body">

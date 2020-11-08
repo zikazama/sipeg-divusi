@@ -37,6 +37,12 @@ class Pegawai extends Model
         return $query;
     }
 
+    public function read_max_all(){
+        $query = DB::table($this->table)
+                ->get();
+        return $query;
+    }
+
     public function read_one_where($where){
         $query = DB::table($this->table)->join('fungsional','fungsional.id_fungsional','=','pegawai.id_fungsional')
                 ->join('struktural','struktural.id_struktural','=','pegawai.id_struktural')
