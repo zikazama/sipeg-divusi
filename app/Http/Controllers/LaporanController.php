@@ -39,6 +39,9 @@ class LaporanController extends Controller
     }
 
     public function getLaporan($year,$month){
+        if(strlen($month) == 1){
+            $month = '0'.$month;
+        }
         $presensi = new Presensi();
         $pegawai = new Pegawai();
         $semua_pegawai = $pegawai->read_full();
